@@ -246,13 +246,13 @@ Within `<py-script>`, we define the handler function `my_draw_matplotlib` as fol
     	y = np.square(x)
     	fig, ax = plt.subplots()
     	ax.scatter(x, y)
-    	pyscript.write('graph-area', fig)
+    	Element("graph-area").write(fig)
     	# or
     	# display(fig, target="graph-area")
 </py-script>
 ```
 
-Note that, to display the `fig` created by `matplotlib`, we can use 2 ways. 1st way is to use `pyscript.write`, 2nd way is to use `display`. Both ways are demonstrated in the above codes. No matter which way we use, we have to build a connection between the python instance `fig` with the html element `<div id="graph-area" ...>`.
+Note that, to display the `fig` created by `matplotlib`, we can use 2 ways. 1st way is to use `Element("your-html-element-id").write`, 2nd way is to use `display`. Both ways are demonstrated in the above codes. No matter which way we use, we have to build a connection between the python instance `fig` with the html element `<div id="graph-area" ...>`.
 
 Now we refresh the webpage and click the `Draw` button, a graph will appear on the page. And this is how we can use `matplotlib` within `pyscript`.
 
@@ -357,7 +357,7 @@ def my_draw_matplotlib():
     y = np.square(x)
     fig, ax = plt.subplots()
     ax.scatter(x, y)
-    pyscript.write('graph-area', fig)
+    Element("graph-area").write(fig)
     # or
     # display(fig, target="graph-area")
 
