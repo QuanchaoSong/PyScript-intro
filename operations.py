@@ -23,7 +23,7 @@ def my_draw_matplotlib():
     y = np.square(x)
     fig, ax = plt.subplots()
     ax.scatter(x, y)
-    pyscript.write('graph-area', fig)
+    Element("graph-area").write(fig)
     # or
     # display(fig, target="graph-area")
 
