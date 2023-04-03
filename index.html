@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Pyscript Introduction</title>
+    <meta charset="utf-8">
+
+    <!-- Add the following 2 lines to utilize `pyscript` -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <!-- The followings are for Bokeh -->
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.0.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.0.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.0.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.0.3.min.js"></script>
+</head>
+
+<body>
+    <!-- This part is for UI -->
+    <div id="ui-wrapper">
+        <h4>Calculate the square of number:</h4>
+        <p><i>Load a file containing a number</i></p>
+        <input id="local-file" type="file" accept=".txt" required />
+        <br /><br />
+        <div>
+            <button id="calculate-button" py-onClick="my_calculate()">Calculate</button>
+        </div>
+        <p id="calculation-result">Result is: </p>        
+        <h4>Draw graph(Matplotlib)</h4>
+        <div>
+            <button id="draw-button" py-onClick="my_draw_matplotlib()">Draw</button>
+        </div>
+        <div id="graph-area"></div>
+        <h4>Draw graph(Bokeh)</h4>
+        <div>
+            <button id="draw-button-bokeh" py-onClick="my_draw_bokeh()">Draw</button>
+        </div>
+        <div id="graph-area-bokeh"></div>
+    </div>
+
+    <!-- This part is to config `pyscript` so that we can use some python packaegs or our own python modules -->
+    <py-config>
+        packages = ["numpy", "matplotlib", "bokeh", "xyzservices", "pandas"]
+
+        [[fetch]]
+        files = ["test_pyscript.py"]
+
+        [[fetch]]
+        from = "http://localhost:8000/python_files.zip"
+        to_folder = "/home/Downloads/"
+        to_file = "python_files.zip"
+    </py-config>
+
+    <!-- comment or delete the below <py-script> part,
+        if your server don't have the problem of serving `.py` files-->
+    <py-script>
+        import os
+        
+        my_python_files_dir = '/home/pyodide/'
+        files = os.listdir(my_python_files_dir)
+        for filename in files:
+            #print("filename:", filename)
+            name, entension_name = os.path.splitext(filename)
+            if (entension_name == ".pyy"):
+                os.rename(my_python_files_dir + filename, my_python_files_dir + name + ".py")
+    </py-script>
+
+    <!-- comment or delete the below <py-script> part, if you don't have a zip file containing python files to load  -->
+    <py-script>
+        import zipfile
+        import os
+
+        zip_file_path = "/home/Downloads/python_files.zip"
+        zip_file = zipfile.ZipFile(zip_file_path)
+        zip_file.extractall("/home/pyodide/")
+        zip_file.close()
+
+        if (os.path.exists(zip_file_path)):
+            os.remove(zip_file_path)
+    </py-script>
+
+    <!-- comment or delete the below <py-script> part, if you don't want to see the working folder information -->
+    <py-script>
+        import os
+        
+        current_dir = os.getcwd()
+        print("Pwd:", current_dir)
+        files = os.listdir("/home/pyodide/")
+        print()
+        for f in files:
+            print(f)
+    </py-script>
+
+    <py-script src="./operations.py">        
+    </py-script>
+
+    <!-- comment or delete the below <py-script> part,
+        if you don't need to see the effect of import a python file's function from a unpacked zip file-->
+    <py-script style="height: 0;">
+        from python_files.f1 import test1
+
+        test1()
+    </py-script>
+</body>
+
+</html>
