@@ -33,5 +33,5 @@ def my_draw_bokeh():
     p = figure(title="Graph", x_axis_label='x', y_axis_label='y')
     p.circle(x, y, size=3, line_color="navy", fill_color="orange", fill_alpha=0.5)
     p_json = json.dumps(json_item(p, "graph-area-bokeh"))
-    Element("graph-area").element.innerHTML = ""
+    Element("graph-area-bokeh").element.innerHTML = ""
     Bokeh.embed.embed_item(JSON.parse(p_json))
