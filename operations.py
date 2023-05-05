@@ -1,3 +1,4 @@
+# operations.py
 from test_pyscript import calculate
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,13 +13,13 @@ async def my_calculate():
     file_list = local_input_element.files.to_py()
     for f in file_list:
         text_content = await f.text()
-        print("text_content:", text_content)
+        # print("text_content:", text_content)
         res = calculate(float(text_content))
-        print("result:", res)
+        # print("result:", res)
         # update the UI element
         Element("calculation-result").element.innerHTML = ("Result is: " + str(res))
 
-def my_draw_matplotlib():    
+def my_draw_matplotlib():
     x = np.random.randn(100)
     y = np.square(x)
     fig, ax = plt.subplots()
