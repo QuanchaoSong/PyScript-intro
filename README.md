@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7907144.svg)](https://doi.org/10.5281/zenodo.7907144)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7907143.svg)](https://doi.org/10.5281/zenodo.7907143)
 
 # PyScript for scientific projects: an introduction
 
