@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Song"
+  given-names: "Quanchao"
+  orcid: "https://orcid.org/0009-0005-9131-2257"
+- family-names: "Sanjari"
+  given-names: "Shahab"
+  orcid: "https://orcid.org/0000-0001-7321-0429"
+title: "PyScript for scientific projects: an introduction"
+doi: 10.5281/ZENODO.7907143
+date-released: 2023-05-08
+url: "https://github.com/QuanchaoSong/PyScript-intro"
