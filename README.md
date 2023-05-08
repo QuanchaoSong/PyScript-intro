@@ -65,7 +65,7 @@ Now open this `index.html` file with any web browser, you should see that the UI
 
 <img width="1172" alt="Screen Shot 2023-05-05 at 4 01 20 PM" src="https://user-images.githubusercontent.com/47345588/236534910-0d3b8d32-d7ee-4338-af2c-ff6000004501.png">
 
-#### 3. Configure
+#### 3. Configure the Python runtime environment
 
 Now that the UI is working, we can move on to implementing functions using `pyscript`. But before we do that, we need to do some configuration for its Python environment within this `pyscript`-based web page.
 
